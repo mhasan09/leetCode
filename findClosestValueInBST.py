@@ -1,6 +1,3 @@
-
-
-
 def findClosestValueInBst(tree, target):
     closest = None
     currentNode = tree

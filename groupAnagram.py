@@ -36,16 +36,17 @@
 #
 # print(groupAnagrams(["yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp"]))
 
-def groupAnagrams(words):
-    hashtable = {}
-    for i in words:
-        sortableWord = "".join(sorted(i))
-        if sortableWord in hashtable:
-            hashtable[sortableWord].append(i)
+def groupAnagrams(string_list):
+    # if key is not inside then create a list
+    result = {}
+    for s in string_list:
+        key = "".join(sorted(list(s)))  # key = aet,aet,ant,aet,ant,abt...
+        if key in result:
+            result[key].append(s)  # aet:[eat,tea]...
         else:
-            hashtable[sortableWord] = [i]
+            result[key] = [s]  # aet: [eat]
 
-    return list(hashtable.values())
+    return [i for i in result.values()]  # [['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]
 
 
-print(groupAnagrams(["yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp"]))
+print(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
