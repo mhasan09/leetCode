@@ -261,13 +261,13 @@ def searchInRotatedSortedArr(arr, target):
 
 
 def productExceptSelf(arr):
-    l,r,result = [0]*len(arr),[0]*len(arr),[0]*len(arr)
+    l, r, result = [0] * len(arr), [0] * len(arr), [0] * len(arr)
     l[0] = 1
-    for i in range(1,len(arr)):
-        l[i] = l[i-1] * arr[i-1]
+    for i in range(1, len(arr)):
+        l[i] = l[i - 1] * arr[i - 1]
     r[len(arr) - 1] = 1
-    for k in reversed(range(len(arr)-1)):
-        r[k] = r[k+1] * arr[k+1]
+    for k in reversed(range(len(arr) - 1)):
+        r[k] = r[k + 1] * arr[k + 1]
 
     for i in range(len(arr)):
         result[i] = l[i] * r[i]
