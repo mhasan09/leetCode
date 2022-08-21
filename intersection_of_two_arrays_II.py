@@ -1,15 +1,18 @@
-def intersect(arr1,arr2):
-    hashmap = {}
+def intersect(arr1, arr2):
+    data = {}
     result = []
     for i in arr1:
-        if i in hashmap:
-            hashmap[i] += 1
+        if i in data:
+            data[i] += 1
         else:
-            hashmap[i] = 1
+            data[i] = 1
     for i in arr2:
-        if i in hashmap and hashmap[i] > 0:
+        if i in data and data[i] > 0:
             result.append(i)
-            hashmap[i] -= 1
+            data[i] -= 1
+        else:
+            continue
     return result
 
-print(intersect([4,9,5],[9,4,9,8,4]))
+
+print(intersect([4, 9, 5], [9, 4, 9, 8, 4]))
