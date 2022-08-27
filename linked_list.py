@@ -82,7 +82,20 @@ class LinkedList:
             count += 1
 
     def insert_after_value(self, data_after, data_to_insert):
-        pass
+        if self.head is None:
+            return
+
+        if self.head.data == data_after:
+            self.head.next = Node(data_to_insert,self.head.next)
+            return
+
+        itr = self.head
+        while itr:
+            if itr.data == data_after:
+                node = Node(data_to_insert, itr.next)
+                itr.next = node
+                break
+            itr = itr.next
         # Search for first occurrence of data_after value in linked list
         # Now insert data_to_insert after data_after node
 
