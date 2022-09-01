@@ -86,7 +86,7 @@ class LinkedList:
             return
 
         if self.head.data == data_after:
-            self.head.next = Node(data_to_insert,self.head.next)
+            self.head.next = Node(data_to_insert, self.head.next)
             return
 
         itr = self.head
@@ -100,7 +100,20 @@ class LinkedList:
         # Now insert data_to_insert after data_after node
 
     def remove_by_value(self, data):
-        pass
+        if self.head is None:
+            return
+
+        if self.head.data == data:
+            self.head = self.head.next
+            return
+
+        itr = self.head
+        while itr:
+            if itr.next.data == data:
+                itr.next = itr.next.next
+                break
+            itr = itr.next
+
         # Remove first node that contains data
 
 
