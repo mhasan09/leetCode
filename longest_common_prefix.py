@@ -1,12 +1,12 @@
-def longestCommonPrefix(strs):
-    prefix = []
-    for x in zip(*strs):
-        print(x)
-        if len(set(x)) == 1:
-            prefix.append(x[0])
-        else:
-            break
-    return "".join(prefix)
+def longest_common_prefix(strs):
+    str1 = min(strs)
+    str2 = max(strs)
+    i = 0
+    while i < len(str1):
+        if str1[i] != str2[i]:
+            str1 = str1[:i]
+        i += 1
+    return str1
 
-
-print(longestCommonPrefix(["flower", "flow", "flight"]))
+# print(longest_common_prefix(["flower", "flow", "flight"]))
+print(longest_common_prefix(["flower", "flow", "flowchart"]))
