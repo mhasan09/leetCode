@@ -34,4 +34,24 @@ class Solution:
         return odd_head.next
 
 
+if __name__ == "__main__":
+    one = ListNode(1)
+    two = ListNode(2)
+    three = ListNode(3)
+    four = ListNode(4)
+    five = ListNode(5)
+
+    one.next = two
+    two.next = three
+    three.next = four
+    four.next = five
+    five.next = None
+
+    out = Solution().odd_even_list(one)
+    while out:
+        print(out.val)
+        out = out.next
+
+
+
 
