@@ -1,4 +1,5 @@
 import itertools
+
 from typing import List
 
 
@@ -8,4 +9,4 @@ class Solution:
         return [i for i in result]
 
 
-print(Solution().runningSum([1,2,3,4]))
+print(Solution().runningSum([1, 2, 3, 4]))
