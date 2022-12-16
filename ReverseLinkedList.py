@@ -1,16 +1,18 @@
-# This is an input class. Do not edit.
-class LinkedList:
-    def __init__(self, value):
-        self.value = value
-        self.next = None
+# Definition for singly-linked list.
+from typing import Optional
 
 
-def reverseLinkedList(head):
-    p1 = None
-    p2 = head
-    while p2 is not None:
-        p3 = p2.next
-        p2.next = p1
-        p1 = p2
-        p2 = p3
-    return p2
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev = None
+        while head:
+            next_node = head.next
+            head.next = prev
+            prev = head
+            head = next_node
+
+        return prev
