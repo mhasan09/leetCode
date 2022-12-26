@@ -1,31 +1,17 @@
-# string = [2,7,11,15,3]
-# target = 10
-# b = []
-# for i in range(len(string)-1):
-#     for j in range(i+1,len(string)):
-#         if (string[i]+string[j] == target):
-#             b.append(i)
-#             b.append(j)
-#             j= j+1
-#     i = i+1
-#
-#
-#
-# print(b)
+from typing import List
 
-def twoNumberSum(array, targetSum):
-    outputArr = []
-    array.sort()
-    left = 0
-    right = len(array) - 1
-    for i in range(0, len(array) - 1):
-        if array[left] + array[right] > targetSum:
-            right -= 1
-        elif array[left] + array[right] < targetSum:
-            left += 1
-        elif array[left] + array[right] == targetSum:
-            outputArr.append(left)
-            outputArr.append(right)
-            return outputArr
-    return []
-print(twoNumberSum([-21, 301, 12, 4, 65, 56, 210, 356, 9, -47],164))
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        seen = {}
+        for i, value in enumerate(nums):
+            remaining = target - nums[i]
+
+            if remaining in seen:
+                return [i, seen[remaining]]
+            else:
+                seen[value] = i
+
+
+print(Solution().twoSum([2, 7, 11, 15], 9))
+# print(Solution().twoSum([-21, 301, 12, 4, 65, 56, 210, 356, 9, -47], 164))
