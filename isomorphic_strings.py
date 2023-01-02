@@ -5,6 +5,7 @@ class Solution:
 
     '''
         map takes 2 parameters -> (function, set/list/tuple)
+        find returns the first occurrence of the string item 
     
     '''
 
