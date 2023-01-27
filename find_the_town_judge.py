@@ -15,5 +15,5 @@ class Solution:
                         return i
         return -1
 
-# print(Solution().findJudge(2, [[1, 3], [2, 3]]))
-print(Solution().findJudge(3, [[1, 3], [2, 3], [3, 1]]))
+print(Solution().findJudge(3, [[1, 3], [2, 3]]))
+# print(Solution().findJudge(3, [[1, 3], [2, 3], [3, 1]]))

@@ -1,15 +1,25 @@
-def productExceptSelf(nums):
-    result = [1] * len(nums)  # [1,1,1,1]
-    prefix = 1
-    for i in range(len(nums)):
-        result[i] = prefix  # for first case [1*1]
-        prefix *= nums[i]  # setting the value of prefix
-
-    postfix = 1
-    for i in range(len(nums) - 1, -1, -1):  # reverse order for postfix
-        result[i] *= postfix  # for the last case and multiply it to the array value
-        postfix *= nums[i]  # set the value of postfix
-    return result
+from typing import List
 
 
-print(productExceptSelf([1, 2, 3, 4]))
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        prefix_sum = [1 for _ in range(len(nums))]
+        prefix_sum[0] = 1
+        for i in range(1, len(nums)):
+            prefix_sum[i] = nums[i - 1] * prefix_sum[i - 1]
+
+        postfix_sum = [1 for _ in range(len(nums))]
+        postfix_sum[len(nums) - 1] = 1
+
+        for i in range(len(nums) - 2, -1, -1):
+            postfix_sum[i] = nums[i+1] * postfix_sum[i+1]
+
+        res = [1 for _ in range(len(nums))]
+        for i in range(len(nums)):
+            res[i] = prefix_sum[i] * postfix_sum[i]
+        return res
+
+
+
+
+print(Solution().productExceptSelf([1, 2, 3, 4]))
