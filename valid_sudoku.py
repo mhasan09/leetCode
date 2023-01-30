@@ -1,29 +1,24 @@
+import collections
 from collections import defaultdict
+from typing import List
 
 
-def isValidSudoku(board):
-    row_bag = defaultdict(set)
-    col_bag = defaultdict(set)
-    sec_bag = defaultdict(set)
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        board_data = collections.defaultdict(list)
 
-    for i in range(9):
-        for j in range(9):
-            num = board[i][j]
-
-            if not num.isdigit():
-                continue
-
-            sec = (i // 3, j // 3)
-            if num in row_bag[i] or num in col_bag[j] or num in sec_bag[sec]:
-                return False
-            else:
-                row_bag[i].add(num)
-                col_bag[j].add(num)
-                sec_bag[sec].add(num)
-    return True
+        for i in range(len(board)):
+            for j in range(len(board)):
+                if board[i][j] != ".":
+                    if board[i][j] in board_data:
+                        for pos in board_data[board[i][j]]:
+                            if (pos[0] == i) or (pos[1] == j) or (pos[0] // 3 == i // 3 and pos[1] // 3 == j // 3):
+                                return False
+                    board_data[board[i][j]].append((i, j))
+        return True
 
 
-print(isValidSudoku(
+print(Solution().isValidSudoku(
     [[".", ".", "4", ".", ".", ".", "6", "3", "."],
      [".", ".", ".", ".", ".", ".", ".", ".", "."],
      ["5", ".", ".", ".", ".", ".", ".", "9", "."],
@@ -33,3 +28,15 @@ print(isValidSudoku(
      [".", ".", ".", "5", ".", ".", ".", ".", "."],
      [".", ".", ".", ".", ".", ".", ".", ".", "."],
      [".", ".", ".", ".", ".", ".", ".", ".", "."]]))
+
+# print(Solution().isValidSudoku(
+#     [["5", "3", ".", ".", "7", ".", ".", ".", "."]
+#         , ["6", ".", ".", "1", "9", "5", ".", ".", "."]
+#         , [".", "9", "8", ".", ".", ".", ".", "6", "."]
+#         , ["8", ".", ".", ".", "6", ".", ".", ".", "3"]
+#         , ["4", ".", ".", "8", ".", "3", ".", ".", "1"]
+#         , ["7", ".", ".", ".", "2", ".", ".", ".", "6"]
+#         , [".", "6", ".", ".", ".", ".", "2", "8", "."]
+#         , [".", ".", ".", "4", "1", "9", ".", ".", "5"]
+#         , [".", ".", ".", ".", "8", ".", ".", "7", "9"]]
+# ))
