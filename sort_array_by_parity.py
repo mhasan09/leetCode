@@ -11,6 +11,5 @@ def sort_array_by_parity(arr):
     return arr
 
 
-
 # print(sort_array_by_parity([3, 1, 2, 4]))
 print(sort_array_by_parity([0, 1, 3]))
