@@ -1,21 +1,21 @@
 from typing import List
 
 """
-        sort the start position.
-        the car behind can only catch up no exceed.
-        so if the car start late and speed is faster, it will catch up the car ahead of itself and they become a fleet.
-        there is a target(or destination),so use arrive time to measure. 
-        
-        start late but arrive earlier means the car is behind and will catch up before arriving the destination.
-        
-        position  10  8  5  3  0
-        distance  2   4  7  9  12
-        speed.    2   4  1  3  1
-        time.     1   1  7  3  12
-                      ^     ^
-                      |     |
-                     catch  catch up the previous car before target, join the fleet
-		stack = [1] , [1],[1,7],[1,7][1,7,12]
+    sort the start position.
+    the car behind can only catch up no exceed.
+    so if the car start late and speed is faster, it will catch up the car ahead of itself and they become a fleet.
+    there is a target(or destination),so use arrive time to measure. 
+    
+    start late but arrive earlier means the car is behind and will catch up before arriving the destination.
+    
+    position  10  8  5  3  0
+    distance  2   4  7  9  12
+    speed.    2   4  1  3  1
+    time.     1   1  7  3  12
+                  ^     ^
+                  |     |
+                 catch  catch up the previous car before target, join the fleet
+    stack = [1] , [1],[1,7],[1,7][1,7,12]
 """
 
 
