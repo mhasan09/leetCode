@@ -9,29 +9,20 @@ class ListNode:
 
 class Solution:
     def odd_even_list(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        odd_head = ListNode()
-        odd_tail = odd_head
+        if not head:
+            return None
+        odd = head
+        even = head.next
+        even_head = even
 
-        even_head = ListNode()
-        even_tail = even_head
+        while even and even.next:
+            odd.next = even.next
+            odd = odd.next
+            even.next = odd.next
+            even = even.next
 
-        i = 1
-
-        while head:
-            if i & 1:
-                odd_tail.next = head
-                odd_tail = odd_tail.next
-                head = head.next
-                odd_tail.next = None
-            else:
-                even_tail.next = head
-                even_tail = even_tail.next
-                head = head.next
-                even_tail.next = None
-            i += 1
-
-        odd_tail.next = even_head.next
-        return odd_head.next
+        odd.next = even_head
+        return head
 
 
 if __name__ == "__main__":
