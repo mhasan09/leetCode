@@ -1,9 +1,9 @@
 class Solution:
 
     def climbStairs(self, n: int) -> int:
-        data = [0 for i in range(45)]
+        data = [0 for _ in range(45)]
+        def count(x):
 
-        def stair_climb(x):
             if x == 1:
                 return 1
             elif x == 2:
@@ -12,11 +12,10 @@ class Solution:
             if data[x] != 0:
                 return data[x]
 
-            result = stair_climb(x - 1) + stair_climb(x - 2)
-            data[x] = result
-            return result
-
-        return stair_climb(n)
+            val = count(x - 1) + count(x - 2)
+            data[x] = val
+            return val
+        return count(n)
 
 
 # print(Solution().climbStairs(6))
