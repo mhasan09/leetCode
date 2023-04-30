@@ -3,24 +3,15 @@ import collections
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        data = {
-            "(": ")",
-            "{": "}",
-            "[": "]",
-        }
-
+        d = {'(': ')', '{': '}', '[': ']'}
         stack = []
+
         for i in s:
-
-            if i in data:
+            if i in d:
                 stack.append(i)
-
-            elif len(stack) == 0 or data[stack.pop()] != i:
+            elif len(stack) == 0 or d[stack.pop()] != i:
                 return False
-
-        return len(s) == 0
-
-
+        return len(stack) == 0
 
 
 print(Solution().isValid("()[]{}"))
