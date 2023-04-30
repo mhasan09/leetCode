@@ -1,12 +1,18 @@
-def generate(numRows):
-    result = [[1]]
-    for i in range(numRows - 1):
-        temp = [0] + result[-1] + [0]
-        row = []
-        for j in range(len(result[-1]) + 1):
-            row.append(temp[j] + temp[j + 1])
-        result.append(row)
-    return result
+from typing import List
 
 
-print(generate(4))
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        l = [0] * numRows
+        for i in range(numRows):
+
+            l[i] = [0] * (i + 1)
+            l[i][0] = 1
+            l[i][i] = 1
+
+            for j in range(1, i):
+                l[i][j] = l[i-1][j-1] + l[i-1][j]
+
+        return l
+
+print(Solution().generate(5))
