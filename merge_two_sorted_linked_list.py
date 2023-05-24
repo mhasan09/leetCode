@@ -10,19 +10,23 @@ class ListNode:
 
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        temp_node = ListNode(0)
-        current_node = temp_node
+        dummy = ListNode()
+        tail = dummy
 
-        while list1 is not None and list2 is not None:
+        while list1 and list2:
             if list1.val < list2.val:
-                current_node.next = list1
+                tail.next = list1
                 list1 = list1.next
             else:
-                current_node.next = list2
-                list1 = list1.next
+                tail.next = list2
+                list2 = list2.next
 
-            current_node = current_node.next
+            tail = tail.next
 
-        current_node.next = list1 or list2
+        if list1:
+            tail.next = list1
 
-        return temp_node.next
+        if list2:
+            tail.next = list2
+
+        return dummy.next
