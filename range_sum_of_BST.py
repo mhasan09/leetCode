@@ -11,11 +11,12 @@ class TreeNode:
 
 class Solution:
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
-        sum = 0
-
-        def calculate_sum(root):
+        arr = []
+        def inorder_traversal(root):
             if root:
-                calculate_sum(root.left)
-                if root.left <= root <= root.right:
-                    pass
-
+                inorder_traversal(root.left)
+                if low <= root.val <= high:
+                    arr.append(root.val)
+                inorder_traversal(root.right)
+        inorder_traversal(root)
+        return sum(arr)
