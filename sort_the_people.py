@@ -10,10 +10,11 @@ class Solution:
         return [data[i] for i in heights]
 
 
-print(Solution().sortPeople(["Mary", "John", "Emma"], [180, 165, 170]))
+    def sortPeopleLambda(self, names: List[str], heights: List[int]) -> List[str]:
+        data = list(zip(names, heights))
+        data = sorted(data, key=lambda x:x[1], reverse=True)
+        return [i[0] for i in data]
 
-'''
 
-Mary, emma, john
+print(Solution().sortPeopleLambda(["Mary", "John", "Emma"], [180, 165, 170]))
 
-'''
