@@ -2,6 +2,7 @@
 from typing import Optional, List
 from collections import deque
 
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -11,19 +12,24 @@ class TreeNode:
 
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        result = []
-        queue = deque()
-        queue.append(root)
-        while queue:
-            q_length = len(queue)
-            level = []
-            for i in range(q_length):
-                node = queue.popleft()
-                if node:
-                    level.append(node.val)
-                    queue.append(node.left)
-                    queue.append(node.right)
-            if level:
-                result.append(level)
-        return result
+        if not root:
+            return []
 
+        return_list = []
+        queue = deque()
+        queue.append([root])
+
+        while queue:
+            ans = []
+            for i in range(len(queue)):
+                node = queue.popleft()
+                ans.append(node.val)
+
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+
+            return_list.append(ans)
+
+        return return_list
