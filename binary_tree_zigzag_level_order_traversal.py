@@ -28,8 +28,11 @@ class Solution:
                 if current_data.right is not None:
                     q.append(current_data.right)
             return_list.append(level_data)
-        return return_list
 
+        for i in range(len(return_list)):
+            if i % 2 != 0:
+                return_list[i] = return_list[i][::-1]
+        return return_list
 
 node1 = TreeNode(1)
 node2 = TreeNode(2)

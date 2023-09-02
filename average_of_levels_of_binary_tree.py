@@ -1,6 +1,4 @@
-# Definition for a binary tree node.
 from typing import Optional, List
-from collections import deque
 
 
 class TreeNode:
@@ -11,7 +9,29 @@ class TreeNode:
 
 
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+        if root is None:
+            return root
+        q = []
+        result_data = []
+
+        q.append(root)
+        while len(q) > 0:
+            current_sum = 0
+            l = len(q)
+            for _ in range(l):
+                current_data = q.pop(0)
+                current_sum += current_data.val
+                if current_data.left is not None:
+                    q.append(current_data.left)
+                if current_data.right is not None:
+                    q.append(current_data.right)
+
+            result_data.append(current_sum/l)
+        return result_data
+
+
+"""
         if root is None:
             return root
         q = []
@@ -30,31 +50,4 @@ class Solution:
             return_list.append(level_data)
         return return_list
 
-
-node1 = TreeNode(1)
-node2 = TreeNode(2)
-node3 = TreeNode(3)
-node4 = TreeNode(4)
-node5 = TreeNode(5)
-node6 = TreeNode(6)
-node7 = TreeNode(7)
-node8 = TreeNode(8)
-node9 = TreeNode(9)
-node10 = TreeNode(10)
-node11 = TreeNode(11)
-
-node1.left = node2
-node1.right = node3
-
-node2.left = node4
-node2.right = node5
-
-node3.left = node6
-node3.right = node7
-
-node4.left = node8
-node4.right = node9
-
-node6.left = node10
-node7.right = node11
-print(Solution().levelOrder(node1))
+"""

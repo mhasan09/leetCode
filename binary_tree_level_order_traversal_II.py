@@ -28,7 +28,7 @@ class Solution:
                 if current_data.right is not None:
                     q.append(current_data.right)
             return_list.append(level_data)
-        return return_list
+        return return_list[::-1]
 
 
 node1 = TreeNode(1)
