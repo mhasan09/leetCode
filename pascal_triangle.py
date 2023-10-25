@@ -3,12 +3,7 @@ from typing import List
 
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
-        output = []
-        for i in range(numRows+1):
-            temp_arr = []
-            output.append(temp_arr)
-            output[i] = [0] * i
-        output = output[1:]
+        output = [[0] * i for i in range(1, numRows + 1)]
 
         row_len = len(output)
         col_len = len(output[0])
