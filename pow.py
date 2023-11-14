@@ -1,10 +1,26 @@
-def my_pow(x, n):
-    if n == 0:
-        return 1
-    elif n < 0:
-        return my_pow(1 / x, -n)
-    elif n % 2 == 0:
-        temp = my_pow(x, n//2)
-        return temp * temp
-    else:
-        return x * my_pow(x, n-1)
+class Solution:
+    def myPow(self, number: float, power: int) -> float:
+        answer = 1.0
+        p = power
+
+        if p < 0:
+            p = -1 * p
+
+        while p:
+            if p % 2 == 0:
+                number = number * number
+                p = p // 2
+
+            else:
+                answer = answer * number
+                p = p - 1
+
+        if power < 0:
+            answer = 1.0 / answer
+
+        return answer
+
+
+# print(Solution().myPow(2.0000, 10))
+print(Solution().myPow(2.0000, -2))
+
