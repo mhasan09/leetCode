@@ -3,8 +3,8 @@ from typing import List
 
 class Solution:
     def majorityElement(self, arr: List[int]) -> List[int]:
-        element_1 = 0
-        element_2 = 0
+        element_1 = float("-inf")
+        element_2 = float("-inf")
         count_1 = 0
         count_2 = 0
 
@@ -47,3 +47,4 @@ class Solution:
 print(Solution().majorityElement([3, 2, 3]))
 print(Solution().majorityElement([1,2]))
 print(Solution().majorityElement([2,2]))
+print(Solution().majorityElement([0,0]))
