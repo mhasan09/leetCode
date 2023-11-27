@@ -1,5 +1,12 @@
 from typing import List
 
+"""
+This is a fast and slow pointer approach, if the array
+contains duplicate element then it'll form a cycle 
+We'll iterate the fast and slow pointer until slow == fast 
+
+
+"""
 
 class Solution:
     def findDuplicate(self, arr: List[int]) -> int:
