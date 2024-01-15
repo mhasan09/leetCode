@@ -10,24 +10,29 @@ class ListNode:
 
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        fast = slow = head
-        while fast and fast.next:
+        slow = fast = head
+        while fast.next is not None and fast.next.next is not None:
             slow = slow.next
             fast = fast.next.next
 
-        prev = None
-        while slow:
-            nxt = slow.next
-            slow.next = prev
-            prev = slow
-            slow = nxt
-
-        while prev:
-            if prev.val != head.val:
+        slow.next = self.reverse(slow.next)
+        slow = slow.next
+        dummy = head
+        while slow is not None:
+            if slow.val != dummy.val:
                 return False
-
-            prev = prev.next
-            head = head.next
+            slow = slow.next
+            dummy = dummy.next
 
         return True
 
+    @staticmethod
+    def reverse(head):
+        prev = None
+        nxt = None
+        while head:
+            nxt = head.next
+            head.next = prev
+            prev = head
+            head = nxt
+        return prev
