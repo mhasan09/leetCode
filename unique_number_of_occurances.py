@@ -1,17 +1,11 @@
-def unique_number(arr):
-    data = {}
-    for i in range(0, len(arr)):
-        if arr[i] in data:
-            data[arr[i]] += 1
-        else:
-            data[arr[i]] = 1
-
-    value = set()
-
-    for i in data:
-        value.add(data[i])
-
-    return len(data) == len(value)
+import collections
+from typing import List
 
 
-print(unique_number([1, 2, 2, 1, 1, 3]))
+class Solution:
+    def uniqueOccurrences(self, arr: List[int]) -> bool:
+        data = collections.Counter(arr)
+        return len(set(data.values())) == len(list(data.values()))
+
+
+print(Solution().uniqueOccurrences([1, 2, 2, 1, 1, 3]))
