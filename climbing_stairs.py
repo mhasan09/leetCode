@@ -1,24 +1,21 @@
 class Solution:
 
     def climbStairs(self, n: int) -> int:
-        data = [0 for _ in range(45)]
-        def count(x):
+        dp = [-1] * (n+1)
+        return self.helper(n, dp)
 
-            if x == 1:
-                return 1
-            elif x == 2:
-                return 2
+    def helper(self,n, dp):
+        if n < 0:
+            return 0
+        if n == 0:
+            return 1
+        if dp[n] != -1:
+            return dp[n]
 
-            if data[x] != 0:
-                return data[x]
-
-            val = count(x - 1) + count(x - 2)
-            data[x] = val
-            return val
-        return count(n)
-
+        dp[n] = self.helper(n-1, dp) + self.helper(n-2, dp)
+        return dp[n]
 
 # print(Solution().climbStairs(6))
 # print(Solution().climbStairs(2))
 # print(Solution().climbStairs(3))
-print(Solution().climbStairs(38))
+print(Solution().climbStairs(3))
