@@ -13,6 +13,5 @@ class Solution:
         return right
 
 
-print(Solution().mySqrt(4))
-print(Solution().mySqrt(0))
-print(Solution().mySqrt(1))
+print(Solution().mySqrt(113))
+
