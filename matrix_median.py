@@ -1,31 +1,3 @@
-# from bisect import bisect_right as upper_bound
-#
-# MAX = 100
-# def matrix_median(m, r, d):
-#     mi = m[0][0]
-#     mx = 0
-#     for i in range(r):
-#         if m[i][0] < mi:
-#             mi = m[i][0]
-#         if m[i][d - 1] > mx:
-#             mx = m[i][d - 1]
-#
-#     desired = (r * d + 1) // 2
-#
-#     while mi < mx:
-#         mid = mi + (mx - mi) // 2
-#         count = 0
-#
-#         # Find count of elements smaller than or equal to mid
-#         for i in range(r):
-#             count += upper_bound(m[i], mid)
-#         if count < desired:
-#             mi = mid + 1
-#         else:
-#             mx = mid
-#     print("Median is", mi)
-#     return
-
 def matrix_median(matrix, r, c):
     low = float('inf')
     high = float('-inf')
