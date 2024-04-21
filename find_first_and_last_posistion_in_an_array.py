@@ -1,39 +1,31 @@
-def searchStartIndex(arr, target):
-    index = -1
-    i, j = 0, len(arr) - 1
-    while i <= j:
-        mid = (i + j) // 2
-        if arr[mid] == target:
-            index = mid
-            j = mid - 1
-        elif arr[mid] > target:
-            j = mid - 1
-        else:
-            i = mid + 1
-    return index
+from typing import List
 
 
-def searchEndIndex(arr, target):
-    index = -1
-    i, j = 0, len(arr) - 1
-    while i <= j:
-        mid = (i + j) // 2
-        if arr[mid] == target:
-            index = mid
-            i = mid + 1
-        elif arr[mid] > target:
-            j = mid - 1
-        else:
-            i = mid + 1
-    return index
+class Solution:
+    def searchRange(self, arr: List[int], target: int) -> List[int]:
+        first = self.search(arr,target,False)
+        second = self.search(arr,target, True)
+        return [first, second]
+
+    def search(self, arr, target, has_found_first_index):
+        ans = -1
+        low, high = 0, len(arr) - 1
+        while low <= high:
+            mid = low + (high - low) // 2
+            if arr[mid] < target:
+                low = mid + 1
+            elif arr[mid] > target:
+                high = mid - 1
+            else:
+                ans = mid
+                if has_found_first_index is False:
+                    high = mid - 1
+                else:
+                    low = mid + 1
+        return ans
 
 
-def searchRange(arr, target):
-    pos = [-1, -1]
-    pos[0] = searchStartIndex(arr, target)
-    pos[1] = searchEndIndex(arr, target)
-
-    return pos
 
 
-print(searchRange([5, 7, 7, 8, 8, 10], 6))
+
+print(Solution().searchRange([5, 7, 7, 8, 8, 10], 8))
