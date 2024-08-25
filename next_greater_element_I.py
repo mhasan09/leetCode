@@ -10,6 +10,7 @@ class Solution:
                 next_greater_data[stack.pop()] = num
             stack.append(num)
         result = []
+        print(next_greater_data )
         for num in nums1:
             if num in next_greater_data:
                 result.append(next_greater_data[num])

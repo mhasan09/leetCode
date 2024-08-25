@@ -1,25 +1,17 @@
+from inspect import stack
+from operator import index
 from typing import List
 
 
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        result = []
-        i, j = 0, 1
-        while i < len(temperatures):
-            if j >= len(temperatures):
-                result.append(0)
-                return result
-            if temperatures[i] < temperatures[j]:
-                result.append(j - i)
-                i += 1
-                j = i + 1
-
-            else:
-                j += 1
-                if j >= len(temperatures):
-                    result.append(0)
-                    i += 1
-                    j = i + 1
+        stack = []
+        result = [0] * len(temperatures)
+        for i in range(len(temperatures)):
+            while stack and temperatures[i] > stack[-1][0]:
+                temp, index = stack.pop()
+                result[index] = i - index
+            stack.append((temperatures[i], i))
         return result
 
 
