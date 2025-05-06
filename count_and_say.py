@@ -7,7 +7,8 @@ class Solution:
 
         return rle_data[n-1]
 
-    def calculate_rle(self, s: str) -> str:
+    @staticmethod
+    def calculate_rle(s: str) -> str:
         if len(s) == 0:
             return ''
 
