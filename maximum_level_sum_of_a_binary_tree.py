@@ -11,26 +11,19 @@ class TreeNode:
 
 class Solution:
     def maxLevelSum(self, root: Optional[TreeNode]) -> int:
-        max_sum = float("-inf")
-        level = 0
-        ans = 0
-
-        q = collections.deque()
-        q.append(root)
-        while q:
+        max_sum, ans, level = float("-inf"), 0, 0
+        queue = collections.deque()
+        queue.append(root)
+        while queue:
             level += 1
-            current_sum = 0
-            for _ in range(len(q)):
-                node = q.popleft()
-                print(node.val)
-                current_sum += node.val
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
+            sum_at_current_level = 0
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                sum_at_current_level += node.val
+                if node.left: queue.append(node.left)
+                if node.right: queue.append(node.right)
 
-            if current_sum > max_sum:
-                max_sum = current_sum
+            if sum_at_current_level > max_sum:
+                max_sum = sum_at_current_level
                 ans = level
-
         return ans
